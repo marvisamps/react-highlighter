@@ -8,11 +8,18 @@ class App extends Component {
     this.state = {
       textContent: 'Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim. Mais vale um bebadis conhecidiss, que um alcoolatra anonimis. Quem manda na minha terra sou euzis! Diuretics paradis num copo é motivis de denguis.',
       highlightColor: 'yellowish',
-      contentByColor: {
-        yellow: [],
-        red: [],
-        green : [],
-      }
+      yellowContent: {
+        active: true,
+        content: [],
+      },
+      redContent: {
+        active: false,
+        content: [],
+      },
+      greenContent: {
+        active: false,
+        content: [],
+      },
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -24,6 +31,14 @@ class App extends Component {
 
   handleClick = (property) => {
     this.setState({ highlightColor: property })
+  }
+
+  handleFilter = (p1, p2, p3) => {
+    this.setState({ 
+      yellowContent: { active: true },
+      redContent: { active: false },
+      greenContent: { active: false },
+    })
   }
 
   getSelectedText() {
@@ -39,15 +54,20 @@ class App extends Component {
     let selectionContent = selection.toString();
 
     let span = document.createElement('SPAN');
+
     if(this.state.highlightColor === 'yellowish'){
       span.className = 'yellowish';
-      this.setState({ contentByColor : { yellow: [...this.state.contentByColor.yellow, selectionContent] }});
-    } else if(this.state.highlightColor === 'redish'){
+      this.setState(prevState => ({ yellowContent : { content: [...prevState.yellowContent.content, selectionContent] }}));
+    } 
+    
+    if(this.state.highlightColor === 'redish'){
       span.className = 'redish';
-      this.setState({ contentByColor : { red: [...this.state.contentByColor.red, selectionContent] }});
-    } else {
+      this.setState(prevState => ({ redContent : { content: [...prevState.redContent.content, selectionContent] }}));
+    } 
+    
+    if(this.state.highlightColor === 'greenish'){
       span.className = 'greenish';
-      this.setState({ contentByColor : { green: [...this.state.contentByColor.green, selectionContent] }});
+      this.setState(prevState => ({ greenContent : { content: [...prevState.greenContent.content, selectionContent] }}));
     }
 
     span.textContent = selectionContent;
@@ -69,7 +89,24 @@ class App extends Component {
         <button onClick={() => this.handleClick('redish')}>Red</button>
         <button onClick={() => this.handleClick('greenish')}>Green</button>
 
-        <p onMouseUp={() => this.insertHighlight()}>{this.state.textContent}</p>
+        <p 
+          onMouseUp={() => this.insertHighlight()}
+          className={this.state.highlightColor === 'yellowish' ? 'yellowishSelection' : this.state.highlightColor === 'redish' ? 'redishSelection' : 'greenishSelection'}
+        >
+          {this.state.textContent}
+        </p>
+
+        <button onClick={() => this.handleFilter(this.yellowContent, this.redContent, this.greenContent)}>Show Yellow</button>
+        <button onClick={() => this.handleFilter(this.redContent,this.yellowContent,this.greenContent)}>Show Red</button>
+        <button onClick={() => this.handleFilter('greenContent','redContent','yellowContent')}>Show Green</button>
+
+        {/* <ul>
+          {this.state.yellowContent.active === 'true' &&
+            {this.state.yellowContent.content.map(item =>
+              <li>{item}</li>
+            )}
+          }
+        </ul> */}
       </div>
     );
   }

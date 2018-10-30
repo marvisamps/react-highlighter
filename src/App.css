@@ -6,11 +6,11 @@ body {
   background: yellow;
 }
 
-.yellowish::selection {
+.yellowishSelection::selection {
   background: yellow; /* WebKit/Blink Browsers */
 }
 
-.yellowish::-moz-selection {
+.yellowishSelection::-moz-selection {
   background: yellow; /* Gecko Browsers */
 }
 
@@ -18,11 +18,11 @@ body {
   background: green;
 }
 
-.greenish::selection {
+.greenishSelection::selection {
   background: green; /* WebKit/Blink Browsers */
 }
 
-.greenich::-moz-selection {
+.greenishSelection::-moz-selection {
   background: green; /* Gecko Browsers */
 }
 
@@ -30,10 +30,10 @@ body {
   background: red;
 }
 
-.redish::selection {
+.redishSelection::selection {
   background: red; /* WebKit/Blink Browsers */
 }
 
-.redish::-moz-selection {
+.redishSelection::-moz-selection {
   background: red; /* Gecko Browsers */
 }
