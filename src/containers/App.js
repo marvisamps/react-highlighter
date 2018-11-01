@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { simpleAction } from './actions/simpleAction';
+import * as Actions from '../actions';
 
-import './App.css';
+import TextArea from '../components/TextArea';
+import Button from '../components/Button';
+import InteractionText from '../components/InteractionText';
+
+import '../App.css';
 
 class App extends Component {
   constructor(props) {
@@ -12,10 +17,12 @@ class App extends Component {
     this.state = {
       textContent: 'Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim. Mais vale um bebadis conhecidiss, que um alcoolatra anonimis. Quem manda na minha terra sou euzis! Diuretics paradis num copo é motivis de denguis.',
       highlightColor: 'yellowish',
-      isActive: ['yellowContent'],
       yellowContent: [],
       redContent: [],
       greenContent: [],
+      yellowVisible: true,
+      redVisible: false,
+      greenVisible: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -25,12 +32,34 @@ class App extends Component {
     this.setState({ textContent: event.target.value })
   }
 
-  handleClick = (property) => {
+  handleClick = property => {
     this.setState({ highlightColor: property })
   }
 
-  handleFilter = x => {
-    this.setState({ isActive: [x] });
+  handleFilter = property => {
+    if(property === 'yellow'){
+      this.setState({
+        yellowVisible: true,
+        redVisible: false,
+        greenVisible: false,
+      })
+    }
+
+    if(property === 'red'){
+      this.setState({
+        yellowVisible: false,
+        redVisible: true,
+        greenVisible: false,
+      })
+    }
+
+    if(property === 'green'){
+      this.setState({
+        yellowVisible: false,
+        redVisible: false,
+        greenVisible: true,
+      })
+    }
   }
 
   getSelectedText() {
@@ -70,33 +99,48 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.handleFilter('redContent'));
     return (
       <div>
-        <textarea
-          value={this.state.textContent} 
-          onChange={this.handleChange}
-        />
+        <TextArea value={this.state.textContent} onChange={this.handleChange} />
         
-        <button onClick={() => this.handleClick('yellowish')}>Yellow</button>
-        <button onClick={() => this.handleClick('redish')}>Red</button>
-        <button onClick={() => this.handleClick('greenish')}>Green</button>
+        <Button onClick={() => this.handleClick('yellowish')} label="Yellow" />
+        <Button onClick={() => this.handleClick('redish')} label="Red" />
+        <Button onClick={() => this.handleClick('greenish')} label="Green" />
 
-        <p 
-          onMouseUp={() => this.insertHighlight()}
+        <InteractionText 
           className={this.state.highlightColor === 'yellowish' ? 'yellowishSelection' : this.state.highlightColor === 'redish' ? 'redishSelection' : 'greenishSelection'}
-        >
-          {this.state.textContent}
-        </p>
+          content={this.state.textContent}
+          onInteract={() => this.insertHighlight()}
+        />
 
-        <button onClick={() => this.handleFilter('yellowContent')}>Show Yellow</button>
-        <button onClick={() => this.handleFilter('redContent')}>Show Red</button>
-        <button onClick={() => this.handleFilter('greenContent')}>Show Green</button>
+        <Button onClick={() => this.handleFilter('yellow')} label="Show Yellow" />
+        <Button onClick={() => this.handleFilter('red')} label="Show Red" />
+        <Button onClick={() => this.handleFilter('green')} label="Show Green" />
 
-        <ul>
-          {this.state.yellowContent.map(item =>
-            <li>{item}</li>
-          )}
-        </ul>
+        {this.state.yellowVisible &&
+          <ul>
+            {this.state.yellowContent.map(item =>
+              <li key={item}>{item}</li>
+            )}
+          </ul>
+        }
+
+        {this.state.redVisible &&
+          <ul>
+            {this.state.redContent.map(item =>
+              <li key={item}>{item}</li>
+            )}
+          </ul>
+        }
+
+        {this.state.greenVisible &&
+          <ul>
+            {this.state.greenContent.map(item =>
+              <li key={item}>{item}</li>
+            )}
+          </ul>
+        }
       </div>
     );
   }
@@ -107,7 +151,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  simpleAction: () => dispatch(simpleAction())
+  actions: () => bindActionCreators(Actions, dispatch)
  })
 
  export default connect(mapStateToProps, mapDispatchToProps)(App);
