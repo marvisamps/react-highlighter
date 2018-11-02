@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const Text = styled.p`
   font-size: 16px;
-  color: gray; 
+  color: var(--color-text-default); 
 `;
 
 const InteractionText = ({ content, onInteract }) => {

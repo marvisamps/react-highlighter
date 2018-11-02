@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -97,47 +97,53 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <Fragment>
         <TextArea value={this.state.textContent} onChange={this.handleChange} />
         
-        <Button background="yellow" onClick={() => this.handleClick('yellowish')} label="Yellow" />
-        <Button background="red" onClick={() => this.handleClick('redish')} label="Red" />
-        <Button background="green" onClick={() => this.handleClick('greenish')} label="Green" />
-
         <InteractionText 
           className={this.state.highlightColor === 'yellowish' ? 'yellowishSelection' : this.state.highlightColor === 'redish' ? 'redishSelection' : 'greenishSelection'}
           content={this.state.textContent}
           onInteract={() => this.insertHighlight()}
         />
 
-        <Button background="yellow" onClick={() => this.handleFilter('yellow')} label="Show Yellow" />
-        <Button background="red" onClick={() => this.handleFilter('red')} label="Show Red" />
-        <Button background="green" onClick={() => this.handleFilter('green')} label="Show Green" />
+        <section>
+          <Button background="var(--color-primary)" onClick={() => this.handleClick('yellowish')} label="Yellow" />
+          <Button background="var(--color-secondary)" onClick={() => this.handleClick('redish')} label="Red" />
+          <Button background="var(--color-terciary)" onClick={() => this.handleClick('greenish')} label="Green" />
+        </section>
 
-        {this.state.yellowVisible &&
-          <ul>
-            {this.state.yellowContent.map(item =>
-              <li key={item}>{item}</li>
-            )}
-          </ul>
-        }
+        <section>
+          <Button background="var(--color-primary)" onClick={() => this.handleFilter('yellow')} label="Show Yellow" />
+          <Button background="var(--color-secondary)" onClick={() => this.handleFilter('red')} label="Show Red" />
+          <Button background="var(--color-terciary)" onClick={() => this.handleFilter('green')} label="Show Green" />
+        </section>
 
-        {this.state.redVisible &&
-          <ul>
-            {this.state.redContent.map(item =>
-              <li key={item}>{item}</li>
-            )}
-          </ul>
-        }
+        <section>
+          {this.state.yellowVisible &&
+            <ul>
+              {this.state.yellowContent.map(item =>
+                <li key={item}>{item}</li>
+              )}
+            </ul>
+          }
 
-        {this.state.greenVisible &&
-          <ul>
-            {this.state.greenContent.map(item =>
-              <li key={item}>{item}</li>
-            )}
-          </ul>
-        }
-      </div>
+          {this.state.redVisible &&
+            <ul>
+              {this.state.redContent.map(item =>
+                <li key={item}>{item}</li>
+              )}
+            </ul>
+          }
+
+          {this.state.greenVisible &&
+            <ul>
+              {this.state.greenContent.map(item =>
+                <li key={item}>{item}</li>
+              )}
+            </ul>
+          }
+        </section>
+      </Fragment>
     );
   }
 }

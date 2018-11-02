@@ -1,10 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const TextContent = styled.textarea`
+  flex: 1,
+`;
 
 const TextArea = ({ value, onChange }) => {
 
   return (
-    <textarea value={value} onChange={onChange} />
+    <TextContent value={value} onChange={onChange} />
   )
 }
 
