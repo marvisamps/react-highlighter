@@ -2,38 +2,38 @@ body {
   padding: 15px;
 }
 
-.yellowish {
+.yellow {
   background: yellow;
 }
 
-.yellowishSelection::selection {
+.yellowSelection::selection {
   background: yellow; /* WebKit/Blink Browsers */
 }
 
-.yellowishSelection::-moz-selection {
+.yellowSelection::-moz-selection {
   background: yellow; /* Gecko Browsers */
 }
 
-.greenish {
+.green {
   background: green;
 }
 
-.greenishSelection::selection {
+.greenSelection::selection {
   background: green; /* WebKit/Blink Browsers */
 }
 
-.greenishSelection::-moz-selection {
+.greenSelection::-moz-selection {
   background: green; /* Gecko Browsers */
 }
 
-.redish {
+.red {
   background: red;
 }
 
-.redishSelection::selection {
+.redSelection::selection {
   background: red; /* WebKit/Blink Browsers */
 }
 
-.redishSelection::-moz-selection {
+.redSelection::-moz-selection {
   background: red; /* Gecko Browsers */
 }

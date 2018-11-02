@@ -1,15 +1,22 @@
-export const CHANGE_HIGHLIGHT_COLOR = 'CHANGE_HIGHLIGHT_COLOR';
+export const CHANGE_HIGHLIGHT_COLOR = "CHANGE_HIGHLIGHT_COLOR";
 
 export const changeColor = color => ({
   type: CHANGE_HIGHLIGHT_COLOR,
-  color,
+  color
 });
 
-export const YELLOW_VISIBLE = 'YELLOW_VISIBLE';
-export const yellowVisible = color => ({ type: YELLOW_VISIBLE, payload: color });
+export const CHANGE_VISIBLE = "CHANGE_VISIBLE";
+export const changeVisible = value => ({ type: CHANGE_VISIBLE, value });
 
-export const RED_VISIBLE = 'RED_VISIBLE';
-export const redVisible = () => ({ type: RED_VISIBLE });
+export const CHANGE_TEXT = "CHANGE_TEXT";
+export const changeText = value => ({ type: CHANGE_TEXT, value });
 
-export const GREEN_VISIBLE = 'GREEN_VISIBLE';
-export const greenVisible = () => ({ type: GREEN_VISIBLE });
+export const SET_HIGHLIGHT = "SET_HIGHLIGHT";
+export const setHighlight = value => ({ type: SET_HIGHLIGHT, value });
+
+export const SET_CONTENT = "SET_CONTENT";
+export const setContent = (color, value) => ({
+  type: SET_CONTENT,
+  color,
+  value
+});
