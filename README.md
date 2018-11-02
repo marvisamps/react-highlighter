@@ -13,7 +13,7 @@ To run this project you must follow these steps:
     - `npm i && npm start`
 
 ## Resources used on this project
-- React
-- Redux
-- Styled Components
-
+- React (Framework)
+- Redux (State Management)
+- Styled Components (Styling)
+- Docz (Documentation)
