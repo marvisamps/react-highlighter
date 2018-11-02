@@ -1,15 +1,18 @@
-
 import React, { Component, Fragment } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 import * as Actions from "../actions";
 
-import TextArea from "../components/TextArea/";
-import Button from "../components/Button/";
-import InteractionText from "../components/InteractionText/";
+import TextArea from "../components/TextArea";
+import Button from "../components/Button";
+import ButtonMarker from "../components/ButtonMarker";
+import InteractionText from "../components/InteractionText";
+import DescriptionTextArea from "../components/DescriptionTextArea";
+import DescriptionInteractionText from "../components/DescriptionInteractionText";
 
-import "../App.css";
+import AreaButtonsInteraction from "../containers/AreaButtonsInteraction";
+import ContentTexts from "../containers/ContentTexts";
 
 class App extends Component {
   getSelectedText = () =>
@@ -36,7 +39,7 @@ class App extends Component {
     const {
       changeVisible,
       setHighlight,
-      setText,
+      changeText,
       visible: { visible, selections, text, highlight }
     } = this.props;
 
@@ -44,25 +47,28 @@ class App extends Component {
 
     return (
       <Fragment>
-        <TextArea
-          value={text}
-          onChange={event => setText(event.target.value)}
-        />
-
-        {colors.map(item => (
-          <Button
-            background={item}
-            onClick={() => setHighlight(item)}
-            label={item}
-            key={item}
+        <ContentTexts>
+          <DescriptionTextArea description="Hello, welcome to the our text marker. Please insert any text in the box below:" />
+          <TextArea
+            value={text}
+            onChange={event => changeText(event.target.value)}
           />
-        ))}
-
-        <InteractionText
-          className={`${highlight}Selection`}
-          content={text}
-          onInteract={() => this.insertHighlight()}
-        />
+          <DescriptionInteractionText description="Now select any color and mark the txt. Pick your color:" />
+          <AreaButtonsInteraction>
+            {colors.map(item => (
+              <ButtonMarker
+                background={item}
+                onClick={() => setHighlight(item)}
+                key={item}
+              />
+            ))}
+          </AreaButtonsInteraction>
+          <InteractionText
+            className={`${highlight}Selection`}
+            content={text}
+            onInteract={() => this.insertHighlight()}
+          />
+        </ContentTexts>
 
         {colors.map(item => (
           <Button
@@ -76,7 +82,9 @@ class App extends Component {
         {visible && (
           <ul>
             {selections[visible].map(item => (
-              <li key={item}>{item}</li>
+              <li key={item} style={{ backgroundColor: visible }}>
+                {item}
+              </li>
             ))}
           </ul>
         )}
