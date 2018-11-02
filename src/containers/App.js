@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 
 import * as Actions from '../actions';
 
-import TextArea from '../components/TextArea';
-import Button from '../components/Button';
-import InteractionText from '../components/InteractionText';
+import TextArea from '../components/TextArea/';
+import Button from '../components/Button/';
+import InteractionText from '../components/InteractionText/';
 
 import '../App.css';
 
@@ -20,9 +20,6 @@ class App extends Component {
       yellowContent: [],
       redContent: [],
       greenContent: [],
-      yellowVisible: true,
-      redVisible: false,
-      greenVisible: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -99,14 +96,13 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.handleFilter('redContent'));
     return (
       <div>
         <TextArea value={this.state.textContent} onChange={this.handleChange} />
         
-        <Button onClick={() => this.handleClick('yellowish')} label="Yellow" />
-        <Button onClick={() => this.handleClick('redish')} label="Red" />
-        <Button onClick={() => this.handleClick('greenish')} label="Green" />
+        <Button background="yellow" onClick={() => this.handleClick('yellowish')} label="Yellow" />
+        <Button background="red" onClick={() => this.handleClick('redish')} label="Red" />
+        <Button background="green" onClick={() => this.handleClick('greenish')} label="Green" />
 
         <InteractionText 
           className={this.state.highlightColor === 'yellowish' ? 'yellowishSelection' : this.state.highlightColor === 'redish' ? 'redishSelection' : 'greenishSelection'}
@@ -114,9 +110,9 @@ class App extends Component {
           onInteract={() => this.insertHighlight()}
         />
 
-        <Button onClick={() => this.handleFilter('yellow')} label="Show Yellow" />
-        <Button onClick={() => this.handleFilter('red')} label="Show Red" />
-        <Button onClick={() => this.handleFilter('green')} label="Show Green" />
+        <Button background="yellow" onClick={() => this.handleFilter('yellow')} label="Show Yellow" />
+        <Button background="red" onClick={() => this.handleFilter('red')} label="Show Red" />
+        <Button background="green" onClick={() => this.handleFilter('green')} label="Show Green" />
 
         {this.state.yellowVisible &&
           <ul>

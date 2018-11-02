@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import changeHighlightColor from './changeHighlightColor';
+import { visible } from './visible';
 
 export default combineReducers({
-  changeHighlightColor
+  visible
 });

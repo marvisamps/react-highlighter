@@ -1,0 +1,98 @@
+{
+  "config": {
+    "title": "Highligher",
+    "description": "My awesome app using docz",
+    "themeConfig": {},
+    "menu": [],
+    "ordering": "descending",
+    "version": "0.1.0",
+    "repository": null,
+    "native": false,
+    "codeSandbox": true
+  },
+  "entries": {
+    "src/index.mdx": {
+      "name": "Home",
+      "route": "/",
+      "id": "6576455a124f9aaefd860597f03a8fe4",
+      "filepath": "src/index.mdx",
+      "link": null,
+      "slug": "src-index",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "home",
+          "value": "Home"
+        }
+      ]
+    },
+    "src/components/Button/index.mdx": {
+      "name": "Button",
+      "id": "a08e664b64d63394cab05b2e5d624522",
+      "filepath": "src/components/Button/index.mdx",
+      "link": null,
+      "slug": "src-components-button-index",
+      "route": "/src-components-button-index",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "button",
+          "value": "Button"
+        },
+        {
+          "depth": 2,
+          "slug": "basic-usage",
+          "value": "Basic usage"
+        }
+      ]
+    },
+    "src/components/InteractionText/index.mdx": {
+      "name": "InteractionText",
+      "id": "f699cbadc02764fb16329bfb2d4f7970",
+      "filepath": "src/components/InteractionText/index.mdx",
+      "link": null,
+      "slug": "src-components-interaction-text-index",
+      "route": "/src-components-interaction-text-index",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "interactiontext",
+          "value": "InteractionText"
+        },
+        {
+          "depth": 2,
+          "slug": "basic-usage",
+          "value": "Basic usage"
+        }
+      ]
+    },
+    "src/components/TextArea/index.mdx": {
+      "name": "TextArea",
+      "id": "ddea0dfe7079d47c097af48307be8187",
+      "filepath": "src/components/TextArea/index.mdx",
+      "link": null,
+      "slug": "src-components-text-area-index",
+      "route": "/src-components-text-area-index",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "textarea",
+          "value": "TextArea"
+        },
+        {
+          "depth": 2,
+          "slug": "basic-usage",
+          "value": "Basic usage"
+        }
+      ]
+    }
+  }
+}
