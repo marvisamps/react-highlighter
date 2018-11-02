@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Btn = styled.button(props => ({
-  border: 0,
-  background: props.background,
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderColor: props.background,
+  color: props.background,
+  background: 'transparent',
+  borderRadius: '4px',
+  cursor: 'pointer',
 }));
 
 const Button = ({ background, label, onClick }) => {
