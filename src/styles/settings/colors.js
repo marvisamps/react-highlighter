@@ -1,13 +1,14 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 const GlobalColors = createGlobalStyle`
   :root {
     --color-zero: #FFF;
     --color-dark: #000;
-    --color-primary: yellow;
-    --color-secondary: red;
-    --color-terciary: green;
-    --color-text-default: gray;
+    --color-primary: #ede645;
+    --color-secondary: #f25252;
+    --color-terciary: #64fd57;
+    --color-text-default: #707070;
+    --color-default-gray: #efeff0;
   }
 `;
 
