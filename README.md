@@ -8,9 +8,12 @@ To run this project you must follow these steps:
 
 * Clone this repository
 
-* In another terminal window, use these following commands to start the front-end
+* In another terminal window, use these following commands to start the front-end (runs in port 3000)
     - `cd highlighter`
     - `npm i && npm start`
+
+* To run the documentation, use this command (runs in port 3001)
+    - `yarn docz dev`
 
 ## Resources used on this project
 - React (Framework)
