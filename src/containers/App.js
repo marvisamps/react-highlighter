@@ -10,11 +10,23 @@ import ButtonMarker from "../components/ButtonMarker";
 import InteractionText from "../components/InteractionText";
 import DescriptionTextArea from "../components/DescriptionTextArea";
 import DescriptionInteractionText from "../components/DescriptionInteractionText";
+import DescriptionFilteredByColor from "../components/DescriptionFilteredByColor";
 
 import AreaButtonsInteraction from "../containers/AreaButtonsInteraction";
+import AreaButtonsFilterByColor from "../containers/AreaButtonsFilterByColor";
+import AreaFilteredText from "../containers/AreaFilteredText";
 import ContentTexts from "../containers/ContentTexts";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      active: "yellow",
+      activeFilter: ""
+    };
+  }
+
   getSelectedText = () =>
     document.all
       ? document.getSelection.createRange().text
@@ -35,6 +47,18 @@ class App extends Component {
     range.insertNode(span);
   }
 
+  setActive(property) {
+    this.setState({
+      active: property
+    });
+  }
+
+  setActiveFilter(property) {
+    this.setState({
+      activeFilter: property
+    });
+  }
+
   render() {
     const {
       changeVisible,
@@ -48,7 +72,7 @@ class App extends Component {
     return (
       <Fragment>
         <ContentTexts>
-          <DescriptionTextArea description="Hello, welcome to the our text marker. Please insert any text in the box below:" />
+          <DescriptionTextArea description="Hello, welcome to the highlighter. Please insert any text in the box below:" />
           <TextArea
             value={text}
             onChange={event => changeText(event.target.value)}
@@ -58,8 +82,12 @@ class App extends Component {
             {colors.map(item => (
               <ButtonMarker
                 background={item}
-                onClick={() => setHighlight(item)}
+                onClick={() => {
+                  setHighlight(item);
+                  this.setActive(item);
+                }}
                 key={item}
+                active={item === this.state.active}
               />
             ))}
           </AreaButtonsInteraction>
@@ -68,26 +96,47 @@ class App extends Component {
             content={text}
             onInteract={() => this.insertHighlight()}
           />
-        </ContentTexts>
 
-        {colors.map(item => (
-          <Button
-            background={item}
-            onClick={() => changeVisible(item)}
-            label={`Show ${item}`}
-            key={item}
-          />
-        ))}
+          <DescriptionFilteredByColor description="On the right there is the filter. If a user presses on red, all red text will appear in the box below:" />
 
-        {visible && (
-          <ul>
-            {selections[visible].map(item => (
-              <li key={item} style={{ backgroundColor: visible }}>
-                {item}
-              </li>
+          <AreaButtonsFilterByColor>
+            {colors.map(item => (
+              <Button
+                background={item}
+                onClick={() => {
+                  changeVisible(item);
+                  this.setActiveFilter(item);
+                }}
+                label={`Show ${item}`}
+                key={item}
+                activeFilter={item === this.state.activeFilter}
+              />
             ))}
-          </ul>
-        )}
+          </AreaButtonsFilterByColor>
+
+          <AreaFilteredText>
+            {visible && (
+              <ul style={{ listStyleType: "none", padding: 0 }}>
+                {selections[visible].map(item => (
+                  <li
+                    key={item}
+                    style={{
+                      backgroundColor:
+                        (visible === "yellow" && "var(--color-primary)") ||
+                        (visible === "red" && "var(--color-secondary)") ||
+                        (visible === "green" && "var(--color-terciary)"),
+                      color: "var(--color-text-default)",
+                      padding: "5px",
+                      marginBottom: "1px"
+                    }}
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </AreaFilteredText>
+        </ContentTexts>
       </Fragment>
     );
   }

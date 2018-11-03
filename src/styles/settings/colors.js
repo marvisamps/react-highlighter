@@ -4,9 +4,9 @@ const GlobalColors = createGlobalStyle`
   :root {
     --color-zero: #FFF;
     --color-dark: #000;
-    --color-primary: #ede645;
-    --color-secondary: #f25252;
-    --color-terciary: #64fd57;
+    --color-primary: #ece30b;
+    --color-secondary: #f7a5a5;
+    --color-terciary: #9af792;
     --color-text-default: #707070;
     --color-default-gray: #efeff0;
   }

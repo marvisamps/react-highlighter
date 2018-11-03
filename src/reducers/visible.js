@@ -8,7 +8,7 @@ import {
 const initialState = {
   text:
     "Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim. Mais vale um bebadis conhecidiss, que um alcoolatra anonimis. Quem manda na minha terra sou euzis! Diuretics paradis num copo é motivis de denguis.",
-  visible: "red",
+  visible: "",
   highlight: "yellow",
   selections: {
     red: [],
