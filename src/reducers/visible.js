@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   text:
-    "Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim. Mais vale um bebadis conhecidiss, que um alcoolatra anonimis. Quem manda na minha terra sou euzis! Diuretics paradis num copo é motivis de denguis.",
+    "So, how can I summarise how living in the Netherlands would change your life? You’ll live in a world with delicious Dutch treats, rekindle your love of cycling and the great outdoors. Your camera and phone would go into overdrive at all the beautiful things to capture.",
   visible: "",
   highlight: "yellow",
   selections: {
