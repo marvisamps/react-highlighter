@@ -35,7 +35,7 @@ class TextFilteredContent extends Component {
 
     return (
       <Fragment>
-        <DescriptionFilteredByColor description="On the right there is the filter. If a user presses on red, all red text will appear in the box below:" />
+        <DescriptionFilteredByColor description="On the right there is the filter. If you press the red button, all the red text will appear in the box below:" />
         <AreaButtonsFilterByColor>
           {colors.map(item => (
             <Button

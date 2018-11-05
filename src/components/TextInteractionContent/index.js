@@ -54,7 +54,7 @@ class TextInteractionContent extends Component {
 
     return (
       <Fragment>
-        <DescriptionInteractionText description="Now select any color and mark the txt. Pick your color:" />
+        <DescriptionInteractionText description="Now select any color and mark the text. Pick your color:" />
         <AreaButtonsInteraction>
           {colors.map(item => (
             <ButtonMarker
